@@ -31,7 +31,7 @@ RAWDIR="/data/Luna1/Multimodal/MEG_Raw"
 ```
 
 # Transformation
-## fif file
+## fif file header
 (20240327)
 See `00_findtrans.bash` (using `find_trans.py`; makes [`trans/files_luna1MM.txt`](trans/files_luna1MM.txt) and `trans/log_rest.txt`).
 
@@ -42,6 +42,20 @@ where `"hit"` requires `from`=head, `to`=MRI, and `mean(trans)`!=1. "partial" gi
 ```
 /Volumes/Medusa/Luna1/MM/FS_Subjects/10923_20120119/mri/T1-neuromag/sets/COR-hwangk-120326-110007.fif	hit	head	MRI (surface RAS)	3.9254002512898296 0.9980863332748413 -0.04823729395866394 0.03868649899959564 -0.003494652220979333 0.054638467729091644 0.9809278249740601 -0.1865348219871521 -0.006118252873420715 -0.028950825333595276 0.1882915496826172 0.9816863536834717 -0.043580930680036545 0.0 0.0 0.0 1.0
 ```
+
+### No from `head` to `MR` for rest?
+trans log for MMY4 rest saves to `rest_ds_ss.fif`
+```
+tail -n1 /Volumes/Zeus/meg/MMY4_rest/subjs/11403/11403_Switch_rest_trans.log
+   EXIT OK: Wrote successfully the result to file ... 11403_Switch_rest_ds_sss.fif.
+```
+
+but header there is from `MEG deviced` to `head`
+```
+grep 11403_Switch_rest_sss.fif trans/files*
+...11403_Switch_rest_sss.fif       MEG device      head    4.049433422274888 0.9982056021690369 ...
+```
+
 
 ### Many COR files?
 ```
