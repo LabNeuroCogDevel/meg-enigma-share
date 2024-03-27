@@ -1,13 +1,24 @@
 #!/usr/bin/env python3
+"""
+parse fif header for from,to, and trans mat
+adapted from Jeff's code forwarded by AN
+
+20240326WF
+"""
 import sys, mne, glob, os, os.path as op
 import numpy as np
 def mat_str(mat):
     tot = np.sum(mat)
     return str(tot) + " " + \
             " ".join([str(x) for x in mat.flatten().tolist()])
+
+# does pregenerating save any time?
 eye = np.eye(4)
+zero4 = np.zeros(4)
+
+# mock mne trans mat object. for when read_trans fails
 mock_trans = type("mock",(), dict(from_str='NA',to_str='NA'))
-mock_trans.get = lambda _: np.zeros(4)
+mock_trans.get = lambda _: zero4 
 
 def get_trans(fif):
     """ return dict of fif and trans or None"""
