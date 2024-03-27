@@ -1,8 +1,14 @@
 # Sharing
 revisiting for ENIGMA MEG share. (2023-01-18)
 
+# Acquisiton
+Instructions documented in a [word document](https://github.com/LabNeuroCogDevel/meg-enigma-share/raw/main/Multimodal%20Year%202%20MEG%20Instructions.docx)
+
 # Processing?
-/data/Luna1/Multimodal/Rest_2015_97subjects/scripts/ss_maxfilter.sh
+see [`ref_scripts/`](ref_scripts/). 
+
+Highlights from
+`/data/Luna1/Multimodal/Rest_2015_97subjects/scripts/ss_maxfilter.sh`
 ```
 echo "TRANS"
 /neuro/bin/util/i686-pc-linux-gnu/maxfilter-2.2 \
@@ -12,8 +18,8 @@ echo "TRANS"
     >> /Volumes/Zeus/meg/MMY4/subjs/${ss}/${ss}_Switch_run${i}_trans.log
 ```
 
-
-https://github.com/LabNeuroCogDevel/allscripts/blob/74ac56b144e35fdc070f3aa94854059ccbb482fc/root/Volumes/T800/Multimodal/Rest_2015_97subjects/scripts/maxfilter_rest_wrapper.sh
+And 
+[`maxfilter_rest_wrapper.sh`](https://github.com/LabNeuroCogDevel/allscripts/blob/74ac56b144e35fdc070f3aa94854059ccbb482fc/root/Volumes/T800/Multimodal/Rest_2015_97subjects/scripts/maxfilter_rest_wrapper.sh)
 ```
 RESTDIR="/data/Luna1/Multimodal/Rest_2015_97subjects/subjects"
 RAWDIR="/data/Luna1/Multimodal/MEG_Raw"
@@ -27,7 +33,7 @@ RAWDIR="/data/Luna1/Multimodal/MEG_Raw"
 # Transformation
 ## fif file
 (20240327)
-See `00_findtrans.bash` (using `find_trans.py`; makes `trans/files_luna1MM.txt` and `trans/log_rest.txt`).
+See `00_findtrans.bash` (using `find_trans.py`; makes [`trans/files_luna1MM.txt`](trans/files_luna1MM.txt) and `trans/log_rest.txt`).
 
 Writes file per rows with columns like  `file`, `hit/partial/miss`, `from`, `to`, `mean(trans)`, `trans_matrix`
 
